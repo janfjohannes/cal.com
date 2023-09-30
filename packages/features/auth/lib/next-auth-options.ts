@@ -5,6 +5,7 @@ import type { Provider } from "next-auth/providers";
 import CredentialsProvider from "next-auth/providers/credentials";
 import EmailProvider from "next-auth/providers/email";
 import GoogleProvider from "next-auth/providers/google";
+import z from "zod";
 
 import checkLicense from "@calcom/features/ee/common/server/checkLicense";
 import ImpersonationProvider from "@calcom/features/ee/impersonation/lib/ImpersonationProvider";
@@ -83,6 +84,13 @@ const checkIfUserShouldBelongToOrg = async (idP: IdentityProvider, email: string
   return { orgUsername, orgId: existingOrg?.id };
 };
 
+const CalcomCredentialsQueryParams = z.object({
+  organizationId: z
+    .string()
+    .transform((s) => Number(s))
+    .optional(),
+});
+
 const providers: Provider[] = [
   CredentialsProvider({
     id: "credentials",
@@ -94,7 +102,11 @@ const providers: Provider[] = [
       totpCode: { label: "Two-factor Code", type: "input", placeholder: "Code from authenticator app" },
       backupCode: { label: "Backup Code", type: "input", placeholder: "Two-factor backup code" },
     },
-    async authorize(credentials) {
+    async authorize(credentials, req) {
+      // To handle login directly to an org profile or defaulting to the parent user
+      const { organizationId } = CalcomCredentialsQueryParams.parse(req.query);
+      const profileSelection = organizationId ? { organizationId } : { linkedBy: null };
+
       if (!credentials) {
         console.error(`For some reason credentials are missing`);
         throw new Error(ErrorCode.InternalServerError);
@@ -103,7 +115,7 @@ const providers: Provider[] = [
       const user = await prisma.user.findFirst({
         where: {
           email: credentials.email.toLowerCase(),
-          linkedBy: null,
+          ...profileSelection,
         },
         select: {
           role: true,

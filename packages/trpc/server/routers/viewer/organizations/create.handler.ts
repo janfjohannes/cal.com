@@ -164,20 +164,27 @@ export const createHandler = async ({ input, ctx }: CreateOptions) => {
           },
         },
       },
+      select: {
+        id: true,
+        password: true,
+        organizationId: true,
+        email: true,
+      },
     });
 
     if (!createOwnerOrg.organizationId) throw Error("User not created");
+    const organizationId = createOwnerOrg.organizationId;
 
     await prisma.membership.create({
       data: {
         userId: createOwnerOrg.id,
         role: MembershipRole.OWNER,
         accepted: true,
-        teamId: createOwnerOrg.organizationId,
+        teamId: organizationId,
       },
     });
 
-    return { user: { ...createOwnerOrg, password } };
+    return { user: { ...createOwnerOrg, organizationId, password } };
   } else {
     if (!IS_PRODUCTION) return { checked: true };
     const language = await getTranslation(input.language ?? "en", "common");
