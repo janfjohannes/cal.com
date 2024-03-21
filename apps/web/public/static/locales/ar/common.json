@@ -1,5 +1,5 @@
 {
-  "identity_provider": "موفر الهوية",
+  "identity_provider": "موفر الهوية234",
   "trial_days_left": "يتبقى لديك $t(day, {\"count\": {{days}} }) في الفترة التجريبية من PRO",
   "day_one": "{{count}} يوم",
   "day_other": "{{count}} يوم",
