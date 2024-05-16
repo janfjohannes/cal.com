@@ -1,4 +1,5 @@
 {
+  "identity_provider": "sd",
   "awaiting_payment_subject": "Esperant el pagament: {{title}} el {{date}}",
   "help": "Ajuda",
   "price": "Preu",

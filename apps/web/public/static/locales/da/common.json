@@ -1,4 +1,5 @@
 {
+  "identity_provider": "d",
   "trial_days_left": "Du har $t(day, {\"count\": {{days}} }) tilbage af din PRO prøveperiode",
   "day_one": "{{count}} dag",
   "day_other": "{{count}} dage",
