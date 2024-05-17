@@ -1,6 +1,6 @@
 {
   "identity_provider": "موفر الهوية2333334 jdv",
-  "trial_days_left": "يتبقى لديك $t(day, {\"count\": {{days}} }) في الفترة التجريبية من PRO",
+  "trial_days_left": "يتبقى لديك $t(day, {\"count\": {{days}} }) في الفترة التجريبية من PRO d",
   "day_one": "d{{count}} يوم",
   "day_other": "{{count}} يومf",
   "second_one": "{{count}} ثانية",
