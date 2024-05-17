@@ -1,6 +1,6 @@
 {
   "identity_provider": "d身分提供者",
-  "trial_days_left": "您的 PRO 試用期還有 $t(day, {\"count\": {{days}} }) 到期",
+  "trial_days_left": "您的 PRO 試用期還有 $t(day, {\"count\": {{days}} }) 到期 d",
   "day_one": "{{count}} 天",
   "day_other": "{{count}} 天",
   "second_one": "{{count}} 秒",
