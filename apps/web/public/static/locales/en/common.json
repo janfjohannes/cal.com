@@ -1,6 +1,6 @@
 {
   "identity_provider": "Identity provider dd 48i dfwe sdf dfh j 23",
-  "trial_days_left": "You have $t(day, {\"count\": {{days}} }) left on your PRO trialddd",
+  "trial_days_left": "You have $t(day, {\"count\": {{days}} }) left on your PRO trialdddd",
   "day_one": "{{count}} day",
   "day_other": "{{count}} days",
   "second_one": "{{count}} second",
