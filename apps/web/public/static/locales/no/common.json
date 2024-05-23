@@ -1,4 +1,5 @@
 {
+  "identity_provider": "asdf",
   "trial_days_left": "Du har $t(day, {\"count\": {{days}} }) igjen av PRO-prøveperioden",
   "day_one": "{{count}} dag",
   "day_other": "{{count}} dager",
